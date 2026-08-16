@@ -1,0 +1,154 @@
+.
+├── Makefile
+├── README.md
+├── en.subject.pdf
+├── includes
+│   ├── cub3d.h
+│   ├── cub3d_bonus.h
+│   └── parsing.h
+├── libft
+│   ├── Makefile
+│   ├── ft_atoi.c
+│   ├── ft_bzero.c
+│   ├── ft_calloc.c
+│   ├── ft_isalnum.c
+│   ├── ft_isalpha.c
+│   ├── ft_isascii.c
+│   ├── ft_isdigit.c
+│   ├── ft_isprint.c
+│   ├── ft_itoa.c
+│   ├── ft_lstadd_back_bonus.c
+│   ├── ft_lstadd_front_bonus.c
+│   ├── ft_lstclear_bonus.c
+│   ├── ft_lstdelone_bonus.c
+│   ├── ft_lstiter_bonus.c
+│   ├── ft_lstlast_bonus.c
+│   ├── ft_lstmap_bonus.c
+│   ├── ft_lstnew_bonus.c
+│   ├── ft_lstsize_bonus.c
+│   ├── ft_memchr.c
+│   ├── ft_memcmp.c
+│   ├── ft_memcpy.c
+│   ├── ft_memmove.c
+│   ├── ft_memset.c
+│   ├── ft_putchar_fd.c
+│   ├── ft_putendl_fd.c
+│   ├── ft_putnbr_fd.c
+│   ├── ft_putstr_fd.c
+│   ├── ft_split.c
+│   ├── ft_strchr.c
+│   ├── ft_strdup.c
+│   ├── ft_striteri.c
+│   ├── ft_strjoin.c
+│   ├── ft_strlcat.c
+│   ├── ft_strlcpy.c
+│   ├── ft_strlen.c
+│   ├── ft_strmapi.c
+│   ├── ft_strncmp.c
+│   ├── ft_strnstr.c
+│   ├── ft_strrchr.c
+│   ├── ft_strtrim.c
+│   ├── ft_substr.c
+│   ├── ft_tolower.c
+│   ├── ft_toupper.c
+│   └── libft.h
+├── maps
+│   ├── bad
+│   │   ├── bad_assets.cub
+│   │   ├── bad_ceiling.cub
+│   │   ├── bad_floor.cub
+│   │   ├── bad_name
+│   │   ├── double_player.cub
+│   │   ├── double_rgb.cub
+│   │   ├── double_texture.cub
+│   │   ├── empty.cub
+│   │   ├── invalid_space.cub
+│   │   ├── map_before.cub
+│   │   ├── missing_assets.cub
+│   │   ├── missing_player.cub
+│   │   └── not_close_map.cub
+│   ├── foo.cub
+│   └── good
+│       ├── big.cub
+│       ├── dungeon.cub
+│       ├── huge.cub
+│       ├── maze.cub
+│       ├── medieval.cub
+│       ├── simple.cub
+│       ├── simple2.cub
+│       ├── simple_map.cub
+│       ├── subj.cub
+│       └── trailing_whitespaces.cub
+├── src
+│   ├── bonus
+│   │   ├── hooks.c
+│   │   ├── main_bonus.c
+│   │   ├── minimap.c
+│   │   ├── minimap_utils.c
+│   │   └── mouse.c
+│   ├── gnl
+│   │   ├── get_next_line.c
+│   │   ├── get_next_line.h
+│   │   └── get_next_line_utils.c
+│   └── mandatory
+│       ├── display
+│       │   └── draw.c
+│       ├── init
+│       │   ├── hooks.c
+│       │   ├── init.c
+│       │   ├── init_player.c
+│       │   └── texture_init.c
+│       ├── main.c
+│       ├── parsing
+│       │   ├── check_map.c
+│       │   ├── get_map.c
+│       │   ├── parse_config.c
+│       │   ├── parse_file.c
+│       │   ├── parse_map.c
+│       │   └── parse_utils.c
+│       ├── player
+│       │   ├── player.c
+│       │   └── textures.c
+│       └── utils
+│           ├── cleanup.c
+│           ├── cleanup_2.c
+│           └── utils.c
+├── textures
+│   ├── Asphalt_64.xpm
+│   ├── Bookshelf_64.xpm
+│   ├── Brick_floor_64.xpm
+│   ├── Bricks_64.xpm
+│   ├── Camouflage_64.xpm
+│   ├── Carpet_64.xpm
+│   ├── Catwalk_64.xpm
+│   ├── Cave_64.xpm
+│   ├── Cobblestone_64.xpm
+│   ├── Dirt64.xpm
+│   ├── Dungeon_Wall64.xpm
+│   ├── Fabric64.xpm
+│   ├── Foliage64.xpm
+│   ├── Fur64.xpm
+│   ├── Glass64.xpm
+│   ├── Lava64.xpm
+│   ├── Leaf_Covered_Ground64.xpm
+│   ├── Leaves64.xpm
+│   ├── SPace64.xpm
+│   ├── Sand64.xpm
+│   ├── Sand_with_Rocks64.xpm
+│   ├── Slime64.xpm
+│   ├── Smoke64.xpm
+│   ├── Snow64.xpm
+│   ├── Stone64.xpm
+│   ├── Tiles64.xpm
+│   ├── Wallpaper64.xpm
+│   ├── Water64.xpm
+│   ├── Weathered_Bricks64.xpm
+│   ├── Weathered_Wood64.xpm
+│   ├── Weaving64.xpm
+│   ├── Wood64.xpm
+│   ├── Wood_Planks_164.xpm
+│   ├── Wood_Planks_264.xpm
+│   └── coal_64.xpm
+└── tree.txt
+
+16 directories, 136 files
