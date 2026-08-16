@@ -6,13 +6,13 @@
 /*   By: vfekete <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:27:09 by burei             #+#    #+#             */
-/*   Updated: 2026/08/05 17:00:16 by vfekete          ###   ########.fr       */
+/*   Updated: 2026/08/16                              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "cub3d.h"
 
-void	init_empty_texts(t_map *map)
+static void	init_empty_texts(t_map *map)
 {
 	map->floor_color[0] = -1;
 	map->floor_color[1] = -1;
@@ -41,7 +41,7 @@ void	init_empty_texts(t_map *map)
 	map->curr_tex = NULL;
 }
 
-void	init_empty_map(t_map *map)
+static void	init_empty_map(t_map *map)
 {
 	map->parse_error = NO_ERROR;
 	map->error_msg = "";
@@ -55,30 +55,75 @@ void	init_empty_map(t_map *map)
 	map->height = 0;
 	map->widths = NULL;
 	map->cells = NULL;
+	map->row_capacity = 0;
 	init_empty_texts(map);
 }
 
-void	parse_map(char *map_path, t_map *map)
+static int	count_lines(char **lines)
 {
-	int	map_fd;
+	int	total;
 
-	map_fd = open(map_path, O_RDONLY);
-	if (map_fd == -1)
+	total = 0;
+	while (lines[total])
+		total++;
+	return (total);
+}
+
+static int	find_map_start(t_map *map, char **lines)
+{
+	int	i;
+
+	i = 0;
+	while (lines[i])
 	{
-		if (map->parse_error == NO_ERROR)
-			map->parse_error = OPEN_FAIL;
+		if (is_blank_line(lines[i]))
+			i++;
+		else if (try_parse_config(map, lines[i]))
+		{
+			if (map->parse_error != NO_ERROR)
+				return (-1);
+			i++;
+		}
+		else
+			break ;
+	}
+	check_config_complete(map);
+	if (map->parse_error != NO_ERROR)
+		return (-1);
+	if (!lines[i])
+	{
+		map->parse_error = INVALID_CHAR;
+		return (-1);
+	}
+	return (i);
+}
+
+static void	parse_map_file(char *map_path, t_map *map)
+{
+	int		fd;
+	int		map_start;
+	int		total;
+	t_list	*lst;
+	char	**lines;
+
+	fd = open(map_path, O_RDONLY);
+	if (fd == -1)
+	{
+		map->parse_error = OPEN_FAIL;
 		return ;
 	}
-	parse_assets(map_fd, map);
-	if (!found_all_assets(map))
-	{
-		if (map->parse_error == NO_ERROR)
-			map->parse_error = MISSING_ASSETS;
-		close(map_fd);
+	lst = read_lines(fd, map);
+	close(fd);
+	if (map->parse_error != NO_ERROR)
 		return ;
-	}
-	load_map_data(map_fd, map);
-	close(map_fd);
+	lines = list_to_array(lst, map);
+	if (!lines)
+		return ;
+	total = count_lines(lines);
+	map_start = find_map_start(map, lines);
+	if (map_start >= 0)
+		build_map(map, lines, map_start, total);
+	free_lines(lines);
 }
 
 t_map	*get_map(char *map_path)
@@ -92,9 +137,9 @@ t_map	*get_map(char *map_path)
 		exit(EXIT_FAILURE);
 	}
 	init_empty_map(map);
-	parse_map(map_path, map);
+	parse_map_file(map_path, map);
 	if (map->parse_error != NO_ERROR)
 		return (map);
-	validate_floodfill(map);
+	validate_map_closed(map);
 	return (map);
 }

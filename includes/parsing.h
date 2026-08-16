@@ -120,7 +120,7 @@ void				build_map(t_map *map, char **lines, int start, int total);
 
 /* MAP VALIDATION */
 
-void				validate_floodfill(t_map *map);
+void				validate_closed(t_map *map);
 
 /* PARSE UTILS */
 

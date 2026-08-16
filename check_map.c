@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static int	get_cell(t_map *map, int y, int x)
 {
