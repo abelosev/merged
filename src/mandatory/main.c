@@ -43,8 +43,8 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\nIncorrect argument count.\n", 2);
 		exit(EXIT_SUCCESS);
 	}
-	if (ft_strlen(argv[1]) > 3 && ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4,
-			".cub", 5))
+	if (ft_strlen(argv[1]) < 5 // important bc otherwise files "a" or "".cub" are also valid
+			||  ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 5))
 	{
 		ft_putstr_fd("Error\nWrong filename extension.\n", 2);
 		exit(EXIT_SUCCESS);
